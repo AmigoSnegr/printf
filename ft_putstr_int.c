@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: debizhan <debizhan@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: debizhan <debizhan@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 21:30:25 by dbizjano          #+#    #+#             */
-/*   Updated: 2023/03/24 13:28:20 by debizhan         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:20:51 by debizhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	ft_putstr_int(char *s)
 {
 	int	size;
 
-	size = ft_strlen(s);
 	if (!s)
 	{
 		write(1, "(null)", 6);
-		return (0);
+		return (6);
 	}
+	size = ft_strlen(s);
 	write(1, s, size);
 	return (size);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: debizhan <debizhan@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: debizhan <debizhan@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 19:50:58 by debizhan          #+#    #+#             */
-/*   Updated: 2023/04/13 14:04:55 by debizhan         ###   ########.fr       */
+/*   Updated: 2023/05/29 16:27:55 by debizhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,24 @@
 
 int	check_flag(char flag, va_list lst)
 {
+	void	*ptr;
+
 	if (flag == 'c')
 		return (ft_putchar_int(va_arg(lst, int)));
 	else if (flag == 'p')
 	{
+		ptr = va_arg(lst, void *);
 		write(1, "0x", 2);
-		return (2 + ft_putnbr_base(va_arg(lst, size_t), "0123456789abcdef"));
+		return (2 + ft_putaddress((size_t) ptr, "0123456789abcdef"));
 	}
-	else if (flag == 'd')
+	else if (flag == 'u')
+		return (ft_putunsign(va_arg(lst, int), "0123456789"));
+	else if (flag == 'd' || flag == 'i' || flag == 'u')
 		return (ft_putnbr_base(va_arg(lst, int), "0123456789"));
 	else if (flag == 'x')
-		return (ft_putnbr_base(va_arg(lst, int), "0123456789abcdef"));
+		return (ft_putunsign(va_arg(lst, int), "0123456789abcdef"));
 	else if (flag == 'X')
-		return (ft_putnbr_base(va_arg(lst, int), "0123456789ABCDEF"));
+		return (ft_putunsign(va_arg(lst, int), "0123456789ABCDEF"));
 	else if (flag == 's')
 		return (ft_putstr_int(va_arg(lst, char *)));
 	else if (flag == '%')
@@ -62,13 +67,16 @@ int	ft_printf(const char *arg, ...)
 	va_end(lst);
 	return (size);
 }
-
+// #include <limits.h>
 // int	main(void)
 // {
 // 	char	*ptr = "something";
-// 	int size = ft_printf("Testing\nnumber = %d\nstring %s\nchar = %c\npointer = %p\nhex = %x\ncap hex = %X\n", INT_MIN, "apple", 'c', ptr, 100, 24244224);
-// 	ft_printf("size = %d\n-------------\n", size);
-// 	int og_size = printf("Testing\nnumber = %d\nstring %s\nchar = %c\npointer = %p\nhex = %x\ncap hex = %X\n", INT_MIN, "apple", 'c', ptr, 100, 24244224);
-// 	ft_printf("og_size = %d\n", og_size);
+// 	ft_printf(" %p %p \n", LONG_MIN, LONG_MAX);
+// 	printf(" %p %p ", LONG_MIN, LONG_MAX);
+// 	// printf("%u\n", -2134);
+// 	// int size = ft_printf("Testing\nnumber = %d\nstring %s\nchar = %c\npointer = %p\nhex = %x\ncap hex = %X\n", INT_MIN, "apple", 'c', ptr, 100, 24244224);
+// 	// ft_printf("size = %d\n-------------\n", size);
+// 	// int og_size = printf("Testing\nnumber = %d\nstring %s\nchar = %c\npointer = %p\nhex = %x\ncap hex = %X\n", INT_MIN, "apple", 'c', ptr, 100, 24244224);
+// 	// ft_printf("og_size = %d\n", og_size);
 // 	return (0);
 // }

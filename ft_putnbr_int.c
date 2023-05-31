@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: debizhan <debizhan@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: debizhan <debizhan@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:19:52 by dbizjano          #+#    #+#             */
-/*   Updated: 2023/03/24 13:27:51 by debizhan         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:19:56 by debizhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
